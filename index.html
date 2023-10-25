@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #container{
+            border-radius: 10px;
+            margin: auto;
+            margin-top: 30px;
+            height: 200px;
+            width: 200px;
+       display: flex;
+       justify-content: center ;
+       align-items: center;
+       padding: 20px;
+     
+           border: 1px solid;
+
+        } 
+        .login{
+            text-align: center;
+           
+        }
+        #submit{
+              margin-top: 10px; 
+              transition: 1s;
+    top: 20px;
+    padding: 20px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 10px;
+        }
+        #submit:hover{
+            background-color: aquamarine;
+            
+color: white;
+  border: none;
+}
+
+      
+    </style>
+</head>
+<body>
+    
+    <div id="container">
+    <form action="" class="login">
+        <div class="name">
+            First name:<input type="text" placeholder="Enter name" id="EnterName">
+        </div>
+        <div class="lastname">
+            Last name:<input type="text" placeholder="EnterLastName" id="EnterLastName">
+        </div>
+       <div class="age">
+        Age: <input type="number" placeholder="EnterAgeNumber" id="EnterAgeNumber">
+       </div>
+       <div class="married">
+        Married:<input type="checkbox"id="AreYouMarried">
+       </div>
+        <button id="submit">Log in</button>
+      
+    </form>
+   </div>
+
+
+<table id="logged_table">
+    <thead>
+        
+    <tr id="basliq" style="display: none;">
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>yas</th>
+        <th>evli</th>
+    </tr>
+    </thead>
+</table>
+
+    <script>
+let div=document.getElementById('container')
+let btn=document.getElementById('submit')
+let table=document.getElementById('logged_table')
+btn.addEventListener('click',(event)=>{
+    event.preventDefault()
+let name=document.getElementById('EnterName').value
+let lastname=document.getElementById('EnterLastName').value
+let age=document.getElementById('EnterAgeNumber').value
+let married=document.getElementById('AreYouMarried')
+if (age ==''|| lastname== ''|| name==''|| age<1) {
+    alert('please fill form correctly')
+table.style.border='none'
+}
+else{
+    table.style.width='300px'
+    table.style.border='1px solid'
+table.style.margin='auto'
+table.style.marginTop='30px'
+table.style.borderRadius='10px'   
+let tr=document.getElementById('basliq')
+tr.removeAttribute('style')
+
+//     let tr_head=document.createElement('tr')
+// let th_name=document.createElement('th')
+// let th_last_name=document.createElement('th')
+// let th_age=document.createElement('th')
+// let th_married=document.createElement('th')
+// th_name.textContent='Ad'
+// th_last_name.textContent='Soyad'
+// th_age.textContent='yas'
+// th_married.textContent='evli'
+let tr_account=document.createElement('tr')
+let td_name=document.createElement('td')
+let td_lastname=document.createElement('td')
+let td_age=document.createElement('td')
+let td_married=document.createElement('td')
+td_name.textContent=name
+    td_lastname.textContent=lastname
+td_age.textContent=age
+tr_account.style.textAlign='center'
+if (married.checked==true) {
+    td_married.textContent="yes"
+}
+else{
+    td_married.textContent="no"
+}
+table.append(tr_account)
+// tr_head.append(th_name,th_last_name,th_age,th_married)
+tr_account.append(td_name,td_lastname,td_age,td_married)
+
+}       
+})
+    </script>
+</body>
+</html>
